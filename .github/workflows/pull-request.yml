@@ -21,7 +21,7 @@ jobs:
       - name: Lint
         run: swiftlint --strict
         
-            - name: Create Pull Request
+      - name: Create Pull Request
         if: steps.resolution.outputs.dependenciesChanged == 'true'
         uses: peter-evans/create-pull-request@v3
         with:
