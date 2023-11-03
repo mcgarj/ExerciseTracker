@@ -11,6 +11,8 @@
 		2592106D2AF4E4AC009CCBCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592106C2AF4E4AC009CCBCE /* ContentView.swift */; };
 		2592106F2AF4E4AD009CCBCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2592106E2AF4E4AD009CCBCE /* Assets.xcassets */; };
 		259210722AF4E4AD009CCBCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259210712AF4E4AD009CCBCE /* Preview Assets.xcassets */; };
+		2592107A2AF52064009CCBCE /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 259210792AF52064009CCBCE /* SwiftLintFramework */; };
+		2592107C2AF52064009CCBCE /* swiftlint in Frameworks */ = {isa = PBXBuildFile; productRef = 2592107B2AF52064009CCBCE /* swiftlint */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2592107A2AF52064009CCBCE /* SwiftLintFramework in Frameworks */,
+				2592107C2AF52064009CCBCE /* swiftlint in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,9 +55,8 @@
 		259210692AF4E4AC009CCBCE /* ExerciseTracker */ = {
 			isa = PBXGroup;
 			children = (
-				2592106A2AF4E4AC009CCBCE /* ExerciseTrackerApp.swift */,
-				2592106C2AF4E4AC009CCBCE /* ContentView.swift */,
-				2592106E2AF4E4AD009CCBCE /* Assets.xcassets */,
+				2592107E2AF53704009CCBCE /* Tests */,
+				2592107D2AF536DB009CCBCE /* Sources */,
 				259210702AF4E4AD009CCBCE /* Preview Content */,
 			);
 			path = ExerciseTracker;
@@ -65,6 +68,23 @@
 				259210712AF4E4AD009CCBCE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2592107D2AF536DB009CCBCE /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2592106A2AF4E4AC009CCBCE /* ExerciseTrackerApp.swift */,
+				2592106C2AF4E4AC009CCBCE /* ContentView.swift */,
+				2592106E2AF4E4AD009CCBCE /* Assets.xcassets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2592107E2AF53704009CCBCE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +103,10 @@
 			dependencies = (
 			);
 			name = ExerciseTracker;
+			packageProductDependencies = (
+				259210792AF52064009CCBCE /* SwiftLintFramework */,
+				2592107B2AF52064009CCBCE /* swiftlint */,
+			);
 			productName = ExerciseTracker;
 			productReference = 259210672AF4E4AC009CCBCE /* ExerciseTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +135,9 @@
 				Base,
 			);
 			mainGroup = 2592105E2AF4E4AC009CCBCE;
+			packageReferences = (
+				259210782AF52064009CCBCE /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = 259210682AF4E4AC009CCBCE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,6 +307,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +337,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,6 +373,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		259210782AF52064009CCBCE /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.53.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		259210792AF52064009CCBCE /* SwiftLintFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 259210782AF52064009CCBCE /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = SwiftLintFramework;
+		};
+		2592107B2AF52064009CCBCE /* swiftlint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 259210782AF52064009CCBCE /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = swiftlint;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2592105F2AF4E4AC009CCBCE /* Project object */;
 }
