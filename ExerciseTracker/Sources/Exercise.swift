@@ -1,5 +1,7 @@
 import Foundation
+import SwiftData
 
+@Model
 class Exercise {
     var name: String
     var category: [String]
@@ -8,7 +10,7 @@ class Exercise {
     var weight: Double?
     var distance: Double?
     var timeTaken: Int?
-    
+
     init(name: String = "", category: [String] = [""], date: Date = .now, reps: Int? = nil, weight: Double? = nil, distance: Double? = nil, timeTaken: Int? = nil) {
         self.name = name
         self.category = category
