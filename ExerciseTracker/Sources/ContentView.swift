@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  ExerciseTracker
-//
-//  Created by McGarry, Joe on 03/11/2023.
-//
-
 import SwiftUI
 
 struct ContentView: View {
