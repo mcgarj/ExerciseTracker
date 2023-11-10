@@ -7,6 +7,7 @@ struct EditExerciseView: View {
     var body: some View {
         Form {
             TextField("Name", text: $exercise.name)
+                .accessibilityIdentifier("exerciseName")
             Picker("Category", selection: $exercise.category) {
                 Text("Upper body").tag(1)
                 Text("Lower body").tag(2)
@@ -15,15 +16,18 @@ struct EditExerciseView: View {
                 Text("Cardio").tag(5)
             }
             .pickerStyle(.menu)
+            .accessibilityIdentifier("categoryPicker")
 
             Section {
                 HStack {
                     Text("Reps: ")
                     TextField("Reps", value: $exercise.reps, format: .number )
+                        .accessibilityIdentifier("repTextField")
                 }
                 HStack {
                     Text("Weight (kg):")
                     TextField("Weight", value: $exercise.weight, format: .number)
+                        .accessibilityIdentifier("weightTextField")
                 }
                 
             }

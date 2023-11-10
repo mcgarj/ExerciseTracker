@@ -1,35 +1,33 @@
-//
-//  ExerciseTrackerUITests.swift
-//  ExerciseTrackerUITests
-//
-//  Created by Joe McGarry on 10/11/2023.
-//
-
 import XCTest
 
 final class ExerciseTrackerUITests: XCTestCase {
-    var app: XCUIApplication!
+    private var app: XCUIApplication!
 
-    override func setUpWithError() throws {
+    override func setUp() {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["enable-testing"]
         app.launch()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown()  {
+        app = nil
     }
 
     func testAppStartsEmpty() throws {
         XCTAssertEqual(app.cells.count, 0, "There should be 0 exercises when the app is first launched")
     }
     
-    func testAppCreatingSamples() throws {
+    func testAppAddingExercise() throws {
         app.buttons["Add Exercise"].tap()
         
-        XCTAssertEqual(app.cells.count, 3, "There should be 3 sample exercises after adding sample data")
+        let exerciseNameField = app.textFields["exerciseName"]
+        exerciseNameField.tap()
+        exerciseNameField.typeText("Example")
+        
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        
+        XCTAssertEqual(app.cells.count, 1, "There should be 1 sample exercises after adding sample data")
     }
-
     
 }
