@@ -35,7 +35,7 @@ struct ContentView: View {
         modelContext.insert(shoulderPress)
         modelContext.insert(squats)
     }
-    
+
     func deleteExercise(_ indexSet: IndexSet) {
         for index in indexSet {
             let exercise = exercises[index]
