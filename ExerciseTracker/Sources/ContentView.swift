@@ -9,17 +9,20 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(exercises) { exercise in
-                    VStack {
-                        Text(exercise.name)
-                            .font(.headline)
-                        Text(exercise.category[0])
-                        Text("Reps: \(exercise.reps!)")
-                        Text("Weight: \(exercise.weight!)")
+                    NavigationLink(value: exercise) {
+                        VStack {
+                            Text(exercise.name)
+                                .font(.headline)
+                            Text(exercise.category[0])
+                            Text("Reps: \(exercise.reps!)")
+                            Text("Weight: \(exercise.weight!)")
+                        }
                     }
                 }
                 .onDelete(perform: deleteExercise)
             }
             .navigationTitle("Exercise Tracker")
+            .navigationDestination(for: Exercise.self, destination: EditExerciseView.init)
             .toolbar {
                 Button("Add Exercise", action: addExercise)
             }

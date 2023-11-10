@@ -13,7 +13,7 @@
 		259210722AF4E4AD009CCBCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259210712AF4E4AD009CCBCE /* Preview Assets.xcassets */; };
 		259210832AF54C57009CCBCE /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259210822AF54C57009CCBCE /* Exercise.swift */; };
 		416F6F7C2AFE4D1300252AB9 /* ExerciseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F6F7B2AFE4D1300252AB9 /* ExerciseTrackerUITests.swift */; };
-		416F6F7E2AFE4D1300252AB9 /* ExerciseTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F6F7D2AFE4D1300252AB9 /* ExerciseTrackerUITestsLaunchTests.swift */; };
+		416F6F872AFE6D9300252AB9 /* EditExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F6F862AFE6D9300252AB9 /* EditExerciseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +43,8 @@
 		416F6F6C2AFE46B300252AB9 /* ExerciseTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExerciseTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		416F6F792AFE4D1300252AB9 /* ExerciseTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExerciseTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		416F6F7B2AFE4D1300252AB9 /* ExerciseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTrackerUITests.swift; sourceTree = "<group>"; };
-		416F6F7D2AFE4D1300252AB9 /* ExerciseTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		416F6F842AFE4FAA00252AB9 /* ExerciseTracker.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExerciseTracker.xctestplan; sourceTree = "<group>"; };
+		416F6F862AFE6D9300252AB9 /* EditExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,6 @@
 		2592105E2AF4E4AC009CCBCE = {
 			isa = PBXGroup;
 			children = (
-				416F6F842AFE4FAA00252AB9 /* ExerciseTracker.xctestplan */,
 				259210692AF4E4AC009CCBCE /* ExerciseTracker */,
 				259210682AF4E4AC009CCBCE /* Products */,
 			);
@@ -114,6 +113,7 @@
 			children = (
 				2592106A2AF4E4AC009CCBCE /* ExerciseTrackerApp.swift */,
 				2592106C2AF4E4AC009CCBCE /* ContentView.swift */,
+				416F6F862AFE6D9300252AB9 /* EditExerciseView.swift */,
 				259210822AF54C57009CCBCE /* Exercise.swift */,
 				2592106E2AF4E4AD009CCBCE /* Assets.xcassets */,
 			);
@@ -123,6 +123,7 @@
 		2592107E2AF53704009CCBCE /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				416F6F852AFE6D5400252AB9 /* TestPlans */,
 				416F6F672AFE404700252AB9 /* UnitTests */,
 				416F6F662AFE403F00252AB9 /* UITests */,
 			);
@@ -133,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				416F6F7B2AFE4D1300252AB9 /* ExerciseTrackerUITests.swift */,
-				416F6F7D2AFE4D1300252AB9 /* ExerciseTrackerUITestsLaunchTests.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -143,6 +143,14 @@
 			children = (
 			);
 			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		416F6F852AFE6D5400252AB9 /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				416F6F842AFE4FAA00252AB9 /* ExerciseTracker.xctestplan */,
+			);
+			path = TestPlans;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +291,7 @@
 			files = (
 				2592106D2AF4E4AC009CCBCE /* ContentView.swift in Sources */,
 				2592106B2AF4E4AC009CCBCE /* ExerciseTrackerApp.swift in Sources */,
+				416F6F872AFE6D9300252AB9 /* EditExerciseView.swift in Sources */,
 				259210832AF54C57009CCBCE /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,7 +308,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				416F6F7C2AFE4D1300252AB9 /* ExerciseTrackerUITests.swift in Sources */,
-				416F6F7E2AFE4D1300252AB9 /* ExerciseTrackerUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
