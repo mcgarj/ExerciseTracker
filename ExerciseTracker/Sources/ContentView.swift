@@ -17,6 +17,7 @@ struct ContentView: View {
                         Text("Weight: \(exercise.weight!)")
                     }
                 }
+                .onDelete(perform: deleteExercise)
             }
             .navigationTitle("Exercise Tracker")
             .toolbar {
@@ -33,6 +34,13 @@ struct ContentView: View {
         modelContext.insert(chestPress)
         modelContext.insert(shoulderPress)
         modelContext.insert(squats)
+    }
+    
+    func deleteExercise(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let exercise = exercises[index]
+            modelContext.delete(exercise)
+        }
     }
 }
 
