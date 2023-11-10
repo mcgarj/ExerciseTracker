@@ -11,7 +11,14 @@ class Exercise {
     var distance: Double?
     var timeTaken: Int?
 
-    init(name: String = "", category: [String] = [""], date: Date = .now, reps: Int? = nil, weight: Double? = nil, distance: Double? = nil, timeTaken: Int? = nil) {
+    init(name: String = "",
+         category: [String] = [""],
+         date: Date = .now,
+         reps: Int? = nil,
+         weight: Double? = nil,
+         distance: Double? = nil,
+         timeTaken: Int? = nil) {
+
         self.name = name
         self.category = category
         self.date = date
