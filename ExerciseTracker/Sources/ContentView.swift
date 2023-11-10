@@ -4,9 +4,10 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Query var exercises: [Exercise]
+    @State private var path = [Exercise]()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List {
                 ForEach(exercises) { exercise in
                     NavigationLink(value: exercise) {
@@ -14,8 +15,8 @@ struct ContentView: View {
                             Text(exercise.name)
                                 .font(.headline)
                             Text(exercise.category[0])
-                            Text("Reps: \(exercise.reps!)")
-                            Text("Weight: \(exercise.weight!)")
+                            Text("Reps: \(exercise.reps ?? 0)")
+                            Text("Weight: \(exercise.weight ?? 0.0)")
                         }
                     }
                 }
@@ -24,19 +25,15 @@ struct ContentView: View {
             .navigationTitle("Exercise Tracker")
             .navigationDestination(for: Exercise.self, destination: EditExerciseView.init)
             .toolbar {
-                Button("Add Exercise", action: addExercise)
+                Button("Add Exercise", systemImage: "plus", action: addExercise)
             }
         }
     }
 
     func addExercise() {
-        let chestPress = Exercise(name: "Chest Press", category: ["upper body"], reps: 10, weight: 25)
-        let shoulderPress = Exercise(name: "Shoulder Press", category: ["upper body"], reps: 8, weight: 12.5)
-        let squats = Exercise(name: "Squats", category: ["lower body"], reps: 10, weight: 50)
-
-        modelContext.insert(chestPress)
-        modelContext.insert(shoulderPress)
-        modelContext.insert(squats)
+        let exercise = Exercise()
+        modelContext.insert(exercise)
+        path = [exercise]
     }
 
     func deleteExercise(_ indexSet: IndexSet) {
