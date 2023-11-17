@@ -10,7 +10,7 @@ final class ExerciseTrackerUITests: XCTestCase {
         app.launch()
     }
     
-    override func tearDown()  {
+    override func tearDown() {
         app = nil
     }
     
