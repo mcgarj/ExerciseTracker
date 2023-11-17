@@ -12,7 +12,13 @@
 
   },
   "testTargets" : [
-
+    {
+      "target" : {
+        "containerPath" : "container:ExerciseTracker.xcodeproj",
+        "identifier" : "41730BAB2B077BAE00EDDBFD",
+        "name" : "ExerciseTrackerUnitTests"
+      }
+    }
   ],
   "version" : 1
 }
