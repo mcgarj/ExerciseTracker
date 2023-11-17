@@ -1,7 +1,7 @@
 import SwiftData
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     @Environment(\.modelContext) var modelContext
     @Query var exercises: [Exercise]
     @State private var path = [Exercise]()
@@ -45,5 +45,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }

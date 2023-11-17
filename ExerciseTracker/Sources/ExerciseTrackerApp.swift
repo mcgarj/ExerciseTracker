@@ -7,7 +7,7 @@ struct ExerciseTrackerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
         .modelContainer(modelContainer)
     }
