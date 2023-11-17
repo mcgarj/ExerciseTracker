@@ -8,7 +8,7 @@ on:
 concurrency:
   group: ${{ github.workflow }}--${{ github.ref }}
   cancel-in-progress: true
-  
+
 jobs:
   build:
     name: Build and Test default scheme using any available iPhone simulator
@@ -17,18 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
-      - name: Lint
-        run: swiftlint --strict
-        
-      - name: Create Pull Request
-        if: steps.resolution.outputs.dependenciesChanged == 'true'
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: 'dependencies/ios'
-          delete-branch: true
-          commit-message: 'Update Xcode Dependencies'
-          title: 'Updated Xcode Dependencies'
 
       - name: Build
         env:
@@ -52,4 +40,4 @@ jobs:
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
           xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
-     
+

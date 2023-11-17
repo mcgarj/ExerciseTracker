@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "AABC8DF6-D079-477E-9FE2-F177AAF87ED9",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExerciseTracker.xcodeproj",
+        "identifier" : "41730BAB2B077BAE00EDDBFD",
+        "name" : "ExerciseTrackerUnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}
