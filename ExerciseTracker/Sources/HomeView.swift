@@ -1,13 +1,11 @@
-import SwiftData
 import SwiftUI
 
 struct HomeView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var exercises: [Exercise]
-    @State private var path = [Exercise]()
+    @FetchRequest(sortDescriptors: []) var exercises: FetchedResults<Exercise>
 
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack {
             List {
                 ForEach(exercises) { exercise in
                     NavigationLink(value: exercise) {
@@ -20,10 +18,9 @@ struct HomeView: View {
                         }
                     }
                 }
-                .onDelete(perform: deleteExercise)
+//                .onDelete(perform: deleteExercise)
             }
             .navigationTitle("Exercise Tracker")
-            .navigationDestination(for: Exercise.self, destination: EditExerciseView.init)
             .toolbar {
                 Button("Add Exercise", systemImage: "plus", action: addExercise)
             }
@@ -32,16 +29,15 @@ struct HomeView: View {
 
     func addExercise() {
         let exercise = Exercise()
-        modelContext.insert(exercise)
-        path = [exercise]
+        try? modelContext.save()
     }
-
-    func deleteExercise(_ indexSet: IndexSet) {
-        for index in indexSet {
-            let exercise = exercises[index]
-            modelContext.delete(exercise)
-        }
-    }
+//
+//    func deleteExercise(_ indexSet: IndexSet) {
+//        for index in indexSet {
+//            let exercise = exercises[index]
+//            modelContext.delete(exercise)
+//        }
+//    }
 }
 
 #Preview {
