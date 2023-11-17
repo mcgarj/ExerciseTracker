@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:ExerciseTracker.xctestplan"
+            reference = "container:ExerciseTrackerUITests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -39,17 +39,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "416F6F6B2AFE46B300252AB9"
-               BuildableName = "ExerciseTrackerTests.xctest"
-               BlueprintName = "ExerciseTrackerTests"
-               ReferencedContainer = "container:ExerciseTracker.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "416F6F782AFE4D1300252AB9"
+               BlueprintIdentifier = "41730B9B2B07695F00EDDBFD"
                BuildableName = "ExerciseTrackerUITests.xctest"
                BlueprintName = "ExerciseTrackerUITests"
                ReferencedContainer = "container:ExerciseTracker.xcodeproj">

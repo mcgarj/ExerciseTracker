@@ -29,7 +29,7 @@ struct EditExerciseView: View {
                     TextField("Weight", value: $exercise.weight, format: .number)
                         .accessibilityIdentifier("weightTextField")
                 }
-                
+
             }
         }
         .navigationTitle("Edit Exercise")
