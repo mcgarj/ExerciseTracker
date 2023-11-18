@@ -2,7 +2,8 @@ import SwiftUI
 import SwiftData
 
 struct AddExerciseView: View {
-    @Environment(\.managedObjectContext) var modelContext
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.dismiss) var dismiss
 
     @State private var name = ""
     @State private var date = ""
@@ -41,7 +42,7 @@ struct AddExerciseView: View {
 
             Section {
                 Button("Save") {
-                    let newExercise = Exercise(context: modelContext)
+                    let newExercise = Exercise(context: moc)
                     newExercise.id = UUID()
                     newExercise.name = name
                     newExercise.category = category
@@ -49,11 +50,13 @@ struct AddExerciseView: View {
                     newExercise.weight = weight ?? 0.0
                     newExercise.distance = distance ?? 0.0
                     newExercise.duration = duration ?? 0.0
+
+                    try? moc.save()
+                    dismiss()
                 }
             }
         }
         .navigationTitle("Add Exercise")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
