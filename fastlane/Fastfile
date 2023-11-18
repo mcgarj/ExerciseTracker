@@ -45,5 +45,4 @@ platform :ios do
         testplan: options[:testplan]
       )
     end
-
 end
