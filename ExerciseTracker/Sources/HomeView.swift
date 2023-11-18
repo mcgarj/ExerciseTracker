@@ -1,45 +1,45 @@
-import SwiftData
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(\.modelContext) var modelContext
-    @Query var exercises: [Exercise]
-    @State private var path = [Exercise]()
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var exercises: FetchedResults<Exercise>
+
+    @State private var showingAddScreen = false
 
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationView {
             List {
                 ForEach(exercises) { exercise in
-                    NavigationLink(value: exercise) {
-                        VStack {
-                            Text(exercise.name)
-                                .font(.headline)
-                            Text(exercise.category[0])
-                            Text("Reps: \(exercise.reps ?? 0)")
-                            Text("Weight: \(exercise.weight ?? 0.0)")
-                        }
+                    VStack {
+                        Text(exercise.name ?? "")
+                            .font(.headline)
+                        Text(exercise.category ?? "")
+                        Text("Reps: \(exercise.reps)")
+                        Text("Weight: \(exercise.weight)")
                     }
                 }
                 .onDelete(perform: deleteExercise)
             }
+
             .navigationTitle("Exercise Tracker")
-            .navigationDestination(for: Exercise.self, destination: EditExerciseView.init)
             .toolbar {
-                Button("Add Exercise", systemImage: "plus", action: addExercise)
+                Button {
+                    showingAddScreen.toggle()
+                } label: {
+                    Label("Add Exercise", systemImage: "plus")
+                }
+            }
+            .sheet(isPresented: $showingAddScreen) {
+                AddExerciseView()
             }
         }
-    }
 
-    func addExercise() {
-        let exercise = Exercise()
-        modelContext.insert(exercise)
-        path = [exercise]
     }
 
     func deleteExercise(_ indexSet: IndexSet) {
         for index in indexSet {
             let exercise = exercises[index]
-            modelContext.delete(exercise)
+            moc.delete(exercise)
         }
     }
 }
