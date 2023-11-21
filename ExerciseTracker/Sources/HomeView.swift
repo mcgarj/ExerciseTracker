@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var exercises: FetchedResults<Exercise>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var exercises: FetchedResults<Exercise>
 
     @State private var showingAddScreen = false
 
@@ -36,10 +36,15 @@ struct HomeView: View {
 
     }
 
-    func deleteExercise(_ indexSet: IndexSet) {
-        for index in indexSet {
+    func deleteExercise(at offsets: IndexSet) {
+        for index in offsets {
             let exercise = exercises[index]
             moc.delete(exercise)
+        }
+        do {
+            try? moc.save()
+        } catch {
+            fatalError("Failed to save Core Data")
         }
     }
 }
