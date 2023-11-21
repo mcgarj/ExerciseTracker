@@ -37,7 +37,7 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showingAddScreen) {
-                AddExerciseView()
+                AddEditExerciseView(exercise: <#Exercise?#>)
             }
         }
 

@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 
-struct AddExerciseView: View {
+struct AddEditExerciseView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
 
@@ -12,7 +12,10 @@ struct AddExerciseView: View {
     @State private var weight: Double? = 0.0
     @State private var distance: Double? = 0.0
     @State private var duration: Double? = 0.0
+    @State private var newExercise = false
+
     let categories = ["Upper body", "Lower body", "Cardio", "Core", "Mobility/Stretching"]
+    let exercise: Exercise? // prevents nil being passed if new exercise
 
     var body: some View {
         Form {
@@ -42,24 +45,30 @@ struct AddExerciseView: View {
 
             Section {
                 Button("Save") {
-                    let newExercise = Exercise(context: moc)
-                    newExercise.id = UUID()
-                    newExercise.name = name
-                    newExercise.category = category
-                    newExercise.reps = reps ?? 0
-                    newExercise.weight = weight ?? 0.0
-                    newExercise.distance = distance ?? 0.0
-                    newExercise.duration = duration ?? 0.0
+                    if newExercise {
+                        let newExercise = Exercise(context: moc)
+                        newExercise.id = UUID()
+                        newExercise.name = name
+                        newExercise.category = category
+                        newExercise.reps = reps ?? 0
+                        newExercise.weight = weight ?? 0.0
+                        newExercise.distance = distance ?? 0.0
+                        newExercise.duration = duration ?? 0.0
+                    } else {
+                        exercise?.name = name
+                        exercise?.category = category
+                        exercise?.reps = reps ?? 0
+                        exercise?.weight = weight ?? 0.0
+                        exercise?.distance = distance ?? 0.0
+                        exercise?.duration = duration ?? 0.0
+                    }
+
 
                     try? moc.save()
                     dismiss()
                 }
             }
         }
-        .navigationTitle("Add Exercise")
+        .navigationTitle((newExercise ? "Add Exercise" : exercise?.name ?? "Unknown exercise"))
     }
-}
-
-#Preview {
-    AddExerciseView()
 }
