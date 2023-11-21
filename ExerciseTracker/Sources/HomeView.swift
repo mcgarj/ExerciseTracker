@@ -11,11 +11,17 @@ struct HomeView: View {
             List {
                 ForEach(exercises) { exercise in
                     VStack {
-                        Text(exercise.name ?? "")
-                            .font(.headline)
-                        Text(exercise.category ?? "")
-                        Text("Reps: \(exercise.reps)")
-                        Text("Weight: \(exercise.weight)")
+                        HStack {
+                            VStack {
+                                Text(exercise.name ?? "")
+                                    .font(.headline)
+                                Text(exercise.category ?? "")
+                            }
+                            VStack {
+                                Text("Reps: \(exercise.reps)")
+                                Text("Weight: \(exercise.weight)")
+                            }
+                        }
                     }
                 }
                 .onDelete(perform: deleteExercise)
@@ -23,6 +29,7 @@ struct HomeView: View {
 
             .navigationTitle("Exercise Tracker")
             .toolbar {
+                EditButton()
                 Button {
                     showingAddScreen.toggle()
                 } label: {
