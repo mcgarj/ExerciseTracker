@@ -15,9 +15,27 @@ struct HomeView: View {
                         ExerciseDetailView(exercise: exercise)
                     } label: {
                         ExerciseRowView(exercise: exercise)
+                            .swipeActions(allowsFullSwipe: true) {
+                                Button(role: .destructive) {
+                                    do {
+                                        try delete(exercise)
+                                    } catch {
+                                        print(error)
+                                    }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                                .tint(.red)
+
+                                Button {
+
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.orange)
+                            }
                     }
                 }
-//                .onDelete(perform: deleteExercise)
             }
 
             .navigationTitle("Exercise Tracker")
@@ -37,18 +55,20 @@ struct HomeView: View {
         }
 
     }
+}
 
-//    func deleteExercise(at offsets: IndexSet) {
-//        for index in offsets {
-//            let exercise = exercises[index]
-//            moc.delete(exercise)
-//        }
-//        do {
-//            try? moc.save()
-//        } catch {
-//            fatalError("Failed to save Core Data")
-//        }
-//    }
+extension HomeView {
+
+    func delete(_ exercise: Exercise) throws {
+        let context = provider.viewContext
+        let existingExercise =  try context.existingObject(with: exercise.objectID)
+        context.delete(existingExercise)
+        Task(priority: .background) {
+            try await context.perform {
+                try context.save()
+            }
+        }
+    }
 }
 
 #Preview {
