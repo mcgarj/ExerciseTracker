@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var exercises: FetchedResults<Exercise>
+    @FetchRequest(fetchRequest: Exercise.all()) private var exercises
 
     @State private var showingAddScreen = false
 
@@ -10,11 +10,12 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(0...10, id: \.self) { exercise in
-                    NavigationLink(destination: ExerciseDetailView()) {
-                        EmptyView()
+                ForEach(exercises) { exercise in
+                    NavigationLink {
+                        ExerciseDetailView(exercise: exercise)
+                    } label: {
+                        ExerciseRowView(exercise: exercise)
                     }
-                    ExerciseRowView()
                 }
 //                .onDelete(perform: deleteExercise)
             }
@@ -30,7 +31,7 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showingAddScreen) {
                 NavigationView {
-                    AddExerciseView(viewModel:.init(provider: provider))
+                    AddExerciseView(viewModel: .init(provider: provider))
                 }
             }
         }

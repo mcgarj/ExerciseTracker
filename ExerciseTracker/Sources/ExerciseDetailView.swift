@@ -1,31 +1,33 @@
 import SwiftUI
 
 struct ExerciseDetailView: View {
+    let exercise: Exercise
+
     var body: some View {
         List {
-            Text("Name")
+            Text(exercise.name)
                 .accessibilityIdentifier("exerciseName")
-            Text("Category")
+            Text(exercise.category)
             .accessibilityIdentifier("category")
 
             Section {
                 HStack {
-                    Text("Reps: 10")
+                    Text("Reps: \(exercise.reps)")
                         .accessibilityIdentifier("reps")
                 }
                 HStack {
-                    Text("Weight (kg): 50")
+                    Text("Weight (kg): \(exercise.weight)")
                         .accessibilityIdentifier("weightText")
                 }
 
             }
         }
-        .navigationTitle("Exercise")
+        .navigationTitle(exercise.name)
     }
 }
 
-#Preview {
-    NavigationView {
-        ExerciseDetailView()
-    }
-}
+//#Preview {
+//    NavigationView {
+//        ExerciseDetailView()
+//    }
+//}

@@ -17,7 +17,7 @@ final class DataController {
 
     private init() {
         container = NSPersistentContainer(name: "ExerciseTracker")
-        
+
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores { _, error in
             if let error = error {

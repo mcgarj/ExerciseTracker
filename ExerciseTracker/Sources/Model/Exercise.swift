@@ -3,7 +3,7 @@ import Foundation
 
 // This class is to manually manage the Entity in CoreData
 
-final class Exercise: NSManagedObject {
+final class Exercise: NSManagedObject, Identifiable {
 
     @NSManaged var category: String
     @NSManaged var date: Date
@@ -17,5 +17,20 @@ final class Exercise: NSManagedObject {
         super.awakeFromInsert()
 
         setPrimitiveValue(Date.now, forKey: "date")
+    }
+}
+
+extension Exercise {
+
+    private static var exercisesFetchRequest: NSFetchRequest<Exercise> {
+        NSFetchRequest(entityName: "Exercise")
+    }
+
+    static func all() -> NSFetchRequest<Exercise> {
+        let request: NSFetchRequest<Exercise> = exercisesFetchRequest
+        request.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Exercise.name, ascending: true)
+        ]
+        return request
     }
 }

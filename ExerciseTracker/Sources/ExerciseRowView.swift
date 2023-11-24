@@ -8,21 +8,29 @@
 import SwiftUI
 
 struct ExerciseRowView: View {
+    @Environment(\.managedObjectContext) private var moc
+
+    @ObservedObject var exercise: Exercise
+
     var body: some View {
         HStack {
             VStack {
-                Text("Title")
+                Text(exercise.name)
                     .font(.headline)
-                Text("Category")
+                Text(exercise.category)
             }
             VStack {
-                Text("Reps: ")
-                Text("Weight: ")
+                Text("Reps: \(exercise.reps)")
+                Text("Weight: \(exercise.weight)")
             }
         }
     }
 }
 
-#Preview {
-    ExerciseRowView()
+private extension ExerciseRowView {
+
 }
+
+//#Preview {
+//    ExerciseRowView()
+//}
