@@ -33,4 +33,8 @@ extension Exercise {
         ]
         return request
     }
+
+    static func empty(context: NSManagedObjectContext = DataController.shared.viewContext) -> Exercise {
+        return Exercise(context: context)
+    }
 }

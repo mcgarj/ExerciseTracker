@@ -35,7 +35,7 @@ struct AddExerciseView: View {
 
             }
         }
-        .navigationTitle("Add Exercise")
+        .navigationTitle(viewModel.isNew ? "Add Exercise" : "Update Exercise")
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {

@@ -2,8 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @FetchRequest(fetchRequest: Exercise.all()) private var exercises
-
-    @State private var showingAddScreen = false
+    @State private var exerciseToEdit: Exercise?
 
     var provider = DataController.shared
 
@@ -28,7 +27,7 @@ struct HomeView: View {
                                 .tint(.red)
 
                                 Button {
-
+                                    exerciseToEdit = exercise
                                 } label: {
                                     Label("Edit", systemImage: "pencil")
                                 }
@@ -40,21 +39,22 @@ struct HomeView: View {
 
             .navigationTitle("Exercise Tracker")
             .toolbar {
-                EditButton()
                 Button {
-                    showingAddScreen.toggle()
+                    exerciseToEdit = .empty(context: provider.newContext)
                 } label: {
                     Label("Add Exercise", systemImage: "plus")
                 }
             }
-            .sheet(isPresented: $showingAddScreen) {
+            .sheet(item: $exerciseToEdit, onDismiss: {
+                exerciseToEdit = nil
+            }, content: { exercise in
                 NavigationView {
-                    AddExerciseView(viewModel: .init(provider: provider))
+                    AddExerciseView(viewModel: .init(provider: provider,
+                                                    exercise: exercise))
                 }
-            }
-        }
-
+            })}
     }
+
 }
 
 extension HomeView {
