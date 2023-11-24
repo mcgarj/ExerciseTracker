@@ -1,30 +1,22 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var exercises: FetchedResults<Exercise>
 
     @State private var showingAddScreen = false
 
+    var provider = DataController.shared
+
     var body: some View {
         NavigationView {
             List {
-                ForEach(exercises) { exercise in
-                    VStack {
-                        HStack {
-                            VStack {
-                                Text(exercise.name ?? "")
-                                    .font(.headline)
-                                Text(exercise.category ?? "")
-                            }
-                            VStack {
-                                Text("Reps: \(exercise.reps)")
-                                Text("Weight: \(exercise.weight)")
-                            }
-                        }
+                ForEach(0...10, id: \.self) { exercise in
+                    NavigationLink(destination: ExerciseDetailView()) {
+                        EmptyView()
                     }
+                    ExerciseRowView()
                 }
-                .onDelete(perform: deleteExercise)
+//                .onDelete(perform: deleteExercise)
             }
 
             .navigationTitle("Exercise Tracker")
@@ -37,23 +29,25 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showingAddScreen) {
-                AddEditExerciseView(exercise: <#Exercise?#>)
+                NavigationView {
+                    AddExerciseView(viewModel:.init(provider: provider))
+                }
             }
         }
 
     }
 
-    func deleteExercise(at offsets: IndexSet) {
-        for index in offsets {
-            let exercise = exercises[index]
-            moc.delete(exercise)
-        }
-        do {
-            try? moc.save()
-        } catch {
-            fatalError("Failed to save Core Data")
-        }
-    }
+//    func deleteExercise(at offsets: IndexSet) {
+//        for index in offsets {
+//            let exercise = exercises[index]
+//            moc.delete(exercise)
+//        }
+//        do {
+//            try? moc.save()
+//        } catch {
+//            fatalError("Failed to save Core Data")
+//        }
+//    }
 }
 
 #Preview {

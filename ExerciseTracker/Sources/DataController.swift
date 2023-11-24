@@ -1,12 +1,25 @@
 import Foundation
 import CoreData
 
-class DataController: ObservableObject {
-    // container uses the data model name created
-    let container = NSPersistentContainer(name: "ExerciseTracker")
+final class DataController {
 
-    init() {
-        container.loadPersistentStores { description, error in
+    static let shared = DataController()
+
+    private let container: NSPersistentContainer
+
+    var viewContext: NSManagedObjectContext {
+        container.viewContext
+    }
+
+    var newContext: NSManagedObjectContext {
+        container.newBackgroundContext()
+    }
+
+    private init() {
+        container = NSPersistentContainer(name: "ExerciseTracker")
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.loadPersistentStores { _, error in
             if let error = error {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }

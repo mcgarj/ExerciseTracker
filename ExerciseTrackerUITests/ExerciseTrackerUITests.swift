@@ -9,7 +9,7 @@ final class ExerciseTrackerUITests: XCTestCase {
         app.launchArguments = ["enable-testing"]
         app.launch()
     }
-
+    
     override func tearDown() {
         app = nil
     }
@@ -24,8 +24,9 @@ final class ExerciseTrackerUITests: XCTestCase {
         let exerciseNameField = app.textFields["exerciseName"]
         exerciseNameField.tap()
         exerciseNameField.typeText("Example")
-
-        app.navigationBars.buttons.element(boundBy: 0).tap()
+        
+        let save = app.buttons["saveButton"]
+        save.tap()
 
         XCTAssertEqual(app.cells.count, 1, "There should be 1 exercise after adding test data")
     }
