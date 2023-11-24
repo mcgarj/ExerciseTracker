@@ -46,6 +46,7 @@ struct AddExerciseView: View {
                         print(error)
                     }
                 }
+                .disabled(viewModel.exercise.name == "")
             }
 
             ToolbarItem(placement: .topBarLeading) {
