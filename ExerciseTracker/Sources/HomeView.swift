@@ -1,45 +1,72 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var exercises: FetchedResults<Exercise>
+    @FetchRequest(fetchRequest: Exercise.all()) private var exercises
+    @State private var exerciseToEdit: Exercise?
 
-    @State private var showingAddScreen = false
+    var provider = DataController.shared
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(exercises) { exercise in
-                    VStack {
-                        Text(exercise.name ?? "")
-                            .font(.headline)
-                        Text(exercise.category ?? "")
-                        Text("Reps: \(exercise.reps)")
-                        Text("Weight: \(exercise.weight)")
+                    NavigationLink {
+                        ExerciseDetailView(exercise: exercise)
+                    } label: {
+                        ExerciseRowView(exercise: exercise)
+                            .swipeActions(allowsFullSwipe: true) {
+                                Button(role: .destructive) {
+                                    do {
+                                        try delete(exercise)
+                                    } catch {
+                                        print(error)
+                                    }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                                .tint(.red)
+
+                                Button {
+                                    exerciseToEdit = exercise
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.orange)
+                            }
                     }
                 }
-                .onDelete(perform: deleteExercise)
             }
 
             .navigationTitle("Exercise Tracker")
             .toolbar {
                 Button {
-                    showingAddScreen.toggle()
+                    exerciseToEdit = .empty(context: provider.newContext)
                 } label: {
                     Label("Add Exercise", systemImage: "plus")
                 }
             }
-            .sheet(isPresented: $showingAddScreen) {
-                AddExerciseView()
-            }
-        }
-
+            .sheet(item: $exerciseToEdit, onDismiss: {
+                exerciseToEdit = nil
+            }, content: { exercise in
+                NavigationView {
+                    AddExerciseView(viewModel: .init(provider: provider,
+                                                    exercise: exercise))
+                }
+            })}
     }
 
-    func deleteExercise(_ indexSet: IndexSet) {
-        for index in indexSet {
-            let exercise = exercises[index]
-            moc.delete(exercise)
+}
+
+extension HomeView {
+
+    func delete(_ exercise: Exercise) throws {
+        let context = provider.viewContext
+        let existingExercise =  try context.existingObject(with: exercise.objectID)
+        context.delete(existingExercise)
+        Task(priority: .background) {
+            try await context.perform {
+                try context.save()
+            }
         }
     }
 }
