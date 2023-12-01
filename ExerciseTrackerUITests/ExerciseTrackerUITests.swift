@@ -6,7 +6,7 @@ final class ExerciseTrackerUITests: XCTestCase {
     override func setUp() {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments = ["enable-testing"]
+        app.launchArguments = ["-ui-testing"]
         app.launch()
     }
     
@@ -14,7 +14,7 @@ final class ExerciseTrackerUITests: XCTestCase {
         app = nil
     }
 
-    func testAppStartsEmpty() throws {
+    func test_AppStartsEmpty() throws {
         XCTAssertEqual(app.cells.count, 0, "There should be 0 exercises when the app is first launched")
     }
 
@@ -25,8 +25,7 @@ final class ExerciseTrackerUITests: XCTestCase {
         exerciseNameField.tap()
         exerciseNameField.typeText("Example")
         
-        let save = app.buttons["saveButton"]
-        save.tap()
+        app.buttons["doneButton"].tap()
 
         XCTAssertEqual(app.cells.count, 1, "There should be 1 exercise after adding test data")
     }
@@ -38,7 +37,7 @@ final class ExerciseTrackerUITests: XCTestCase {
         exerciseNameField.tap()
         exerciseNameField.typeText("Example")
 
-        app.navigationBars.buttons.element(boundBy: 0).tap()
+        app.buttons["doneButton"].tap()
 
         app.staticTexts["Example"].swipeLeft(velocity: XCUIGestureVelocity.slow)
         app.buttons["Delete"].tap()

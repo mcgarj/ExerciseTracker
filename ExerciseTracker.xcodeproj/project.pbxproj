@@ -20,6 +20,7 @@
 		4195E6E12B10AD810065E2BB /* ExerciseRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195E6E02B10AD810065E2BB /* ExerciseRowView.swift */; };
 		4195E6E52B10C1780065E2BB /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195E6E42B10C1780065E2BB /* ExerciseDetailView.swift */; };
 		4195E6E82B10C84C0065E2BB /* EditExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195E6E72B10C84C0065E2BB /* EditExerciseViewModel.swift */; };
+		419802C42B19E0040081E894 /* UITestingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419802C32B19E0040081E894 /* UITestingHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		4195E6E02B10AD810065E2BB /* ExerciseRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRowView.swift; sourceTree = "<group>"; };
 		4195E6E42B10C1780065E2BB /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
 		4195E6E72B10C84C0065E2BB /* EditExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseViewModel.swift; sourceTree = "<group>"; };
+		419802C32B19E0040081E894 /* UITestingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		2592107D2AF536DB009CCBCE /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				419802C22B19DFF30081E894 /* UITesting */,
 				4195E6E62B10C8370065E2BB /* Create */,
 				4195E6DF2B10A3690065E2BB /* Model */,
 				2592106A2AF4E4AC009CCBCE /* ExerciseTrackerApp.swift */,
@@ -171,6 +174,14 @@
 				4195E6E72B10C84C0065E2BB /* EditExerciseViewModel.swift */,
 			);
 			path = Create;
+			sourceTree = "<group>";
+		};
+		419802C22B19DFF30081E894 /* UITesting */ = {
+			isa = PBXGroup;
+			children = (
+				419802C32B19E0040081E894 /* UITestingHelper.swift */,
+			);
+			path = UITesting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +328,7 @@
 				416F6F872AFE6D9300252AB9 /* AddExerciseView.swift in Sources */,
 				4195E6E12B10AD810065E2BB /* ExerciseRowView.swift in Sources */,
 				41730BBF2B07C90F00EDDBFD /* ExerciseTracker.xcdatamodeld in Sources */,
+				419802C42B19E0040081E894 /* UITestingHelper.swift in Sources */,
 				4195E6DE2B10A34B0065E2BB /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

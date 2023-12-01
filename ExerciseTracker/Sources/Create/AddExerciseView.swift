@@ -46,6 +46,7 @@ struct AddExerciseView: View {
                         print(error)
                     }
                 }
+                .accessibilityIdentifier("doneButton")
                 .disabled(viewModel.exercise.name == "")
             }
 

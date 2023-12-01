@@ -16,10 +16,15 @@ final class DataController {
     }
 
     private init() {
+        var inMemory: Bool = false
         container = NSPersistentContainer(name: "ExerciseTracker")
-        if Thread.current.isRunningXCTest {
-            container.persistentStoreDescriptions.first?.url = .init(fileURLWithPath: "/dev/null")
+        #if DEBUG
+        if CommandLine.arguments.contains("-ui-testing") {
+            inMemory = true
+            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
+
+        #endif
 
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores { _, error in
@@ -27,21 +32,5 @@ final class DataController {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }
         }
-    }
-}
-
-// This checks to make sure it's a unit test running 
-extension Thread {
-    var isRunningXCTest: Bool {
-        for key in self.threadDictionary.allKeys {
-            guard let keyAsString = key as? String else {
-                continue
-            }
-
-            if keyAsString.split(separator: ".").contains("xctest") {
-                return true
-            }
-        }
-        return false
     }
 }
