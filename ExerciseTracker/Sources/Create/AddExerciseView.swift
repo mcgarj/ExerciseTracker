@@ -15,6 +15,9 @@ struct AddExerciseView: View {
                 ForEach(categories, id: \.self) {
                     Text($0)
                 }
+                .onAppear {
+                    viewModel.exercise.category = categories[0]
+                }
             }
             .pickerStyle(.menu)
             .accessibilityIdentifier("categoryPicker")

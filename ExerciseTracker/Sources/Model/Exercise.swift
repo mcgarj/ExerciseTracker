@@ -15,7 +15,6 @@ final class Exercise: NSManagedObject, Identifiable {
 
     override func awakeFromInsert() {
         super.awakeFromInsert()
-
         setPrimitiveValue(Date.now, forKey: "date")
     }
 }
