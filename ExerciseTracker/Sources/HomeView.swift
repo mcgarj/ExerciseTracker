@@ -8,35 +8,40 @@ struct HomeView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(exercises) { exercise in
-                    NavigationLink {
-                        ExerciseDetailView(exercise: exercise)
-                    } label: {
-                        ExerciseRowView(exercise: exercise)
-                            .swipeActions(allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    do {
-                                        try delete(exercise)
-                                    } catch {
-                                        print(error)
-                                    }
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                                .tint(.red)
+            ZStack {
+                if exercises.isEmpty {
+                    NoExerciseView()
+                } else {
+                    List {
+                        ForEach(exercises) { exercise in
+                            NavigationLink {
+                                ExerciseDetailView(exercise: exercise)
+                            } label: {
+                                ExerciseRowView(exercise: exercise)
+                                    .swipeActions(allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            do {
+                                                try delete(exercise)
+                                            } catch {
+                                                print(error)
+                                            }
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                        .tint(.red)
 
-                                Button {
-                                    exerciseToEdit = exercise
-                                } label: {
-                                    Label("Edit", systemImage: "pencil")
-                                }
-                                .tint(.orange)
+                                        Button {
+                                            exerciseToEdit = exercise
+                                        } label: {
+                                            Label("Edit", systemImage: "pencil")
+                                        }
+                                        .tint(.orange)
+                                    }
                             }
+                        }
                     }
                 }
             }
-
             .navigationTitle("Exercise Tracker")
             .toolbar {
                 Button {
@@ -50,9 +55,10 @@ struct HomeView: View {
             }, content: { exercise in
                 NavigationView {
                     AddExerciseView(viewModel: .init(provider: provider,
-                                                    exercise: exercise))
+                                                     exercise: exercise))
                 }
-            })}
+            })
+        }
     }
 
 }

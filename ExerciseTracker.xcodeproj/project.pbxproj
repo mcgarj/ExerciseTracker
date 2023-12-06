@@ -22,6 +22,7 @@
 		4195E6E82B10C84C0065E2BB /* EditExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195E6E72B10C84C0065E2BB /* EditExerciseViewModel.swift */; };
 		419802C62B19F3320081E894 /* UITestingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419802C52B19F3320081E894 /* UITestingHelper.swift */; };
 		419802C72B19F3320081E894 /* UITestingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419802C52B19F3320081E894 /* UITestingHelper.swift */; };
+		41A604F52B20626D00A85A26 /* NoExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A604F42B20626D00A85A26 /* NoExerciseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		4195E6E42B10C1780065E2BB /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
 		4195E6E72B10C84C0065E2BB /* EditExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseViewModel.swift; sourceTree = "<group>"; };
 		419802C52B19F3320081E894 /* UITestingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestingHelper.swift; sourceTree = "<group>"; };
+		41A604F42B20626D00A85A26 /* NoExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExerciseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				4195E6DF2B10A3690065E2BB /* Model */,
 				2592106A2AF4E4AC009CCBCE /* ExerciseTrackerApp.swift */,
 				2592106C2AF4E4AC009CCBCE /* HomeView.swift */,
+				41A604F42B20626D00A85A26 /* NoExerciseView.swift */,
 				4195E6E02B10AD810065E2BB /* ExerciseRowView.swift */,
 				41730BBD2B07C90F00EDDBFD /* ExerciseTracker.xcdatamodeld */,
 				41730BC02B07C9F100EDDBFD /* DataController.swift */,
@@ -323,6 +326,7 @@
 				41730BBF2B07C90F00EDDBFD /* ExerciseTracker.xcdatamodeld in Sources */,
 				419802C62B19F3320081E894 /* UITestingHelper.swift in Sources */,
 				4195E6DE2B10A34B0065E2BB /* Exercise.swift in Sources */,
+				41A604F52B20626D00A85A26 /* NoExerciseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
