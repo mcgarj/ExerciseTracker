@@ -1,7 +1,7 @@
 import CoreData
 import Foundation
 
-// This class is to manually manage the Entity in CoreData
+// This class is to manually manage the Exercise entity in CoreData
 
 final class Exercise: NSManagedObject, Identifiable {
 
