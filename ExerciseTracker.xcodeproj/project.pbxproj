@@ -25,6 +25,7 @@
 		41A604F52B20626D00A85A26 /* NoExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A604F42B20626D00A85A26 /* NoExerciseView.swift */; };
 		41FF35A52B21C12900419DB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FF35A42B21C12900419DB3 /* ContentView.swift */; };
 		41FF35A72B21C38C00419DB3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FF35A62B21C38C00419DB3 /* ProfileView.swift */; };
+		41FF35B12B230C1500419DB3 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FF35B02B230C1500419DB3 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		41A604F42B20626D00A85A26 /* NoExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExerciseView.swift; sourceTree = "<group>"; };
 		41FF35A42B21C12900419DB3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		41FF35A62B21C38C00419DB3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		41FF35B02B230C1500419DB3 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				4195E6DD2B10A34B0065E2BB /* Exercise.swift */,
+				41FF35B02B230C1500419DB3 /* Person.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				41FF35A72B21C38C00419DB3 /* ProfileView.swift in Sources */,
 				4195E6E52B10C1780065E2BB /* ExerciseDetailView.swift in Sources */,
 				41FF35A52B21C12900419DB3 /* ContentView.swift in Sources */,
+				41FF35B12B230C1500419DB3 /* Person.swift in Sources */,
 				4195E6E82B10C84C0065E2BB /* EditExerciseViewModel.swift in Sources */,
 				41730BC12B07C9F100EDDBFD /* DataController.swift in Sources */,
 				2592106B2AF4E4AC009CCBCE /* ExerciseTrackerApp.swift in Sources */,

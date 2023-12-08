@@ -3,8 +3,8 @@ import SwiftUI
 struct ProfileView: View {
     let goals = ["Gain muscle mass", "Lose weight", "Tone up"]
     @State private var selectedGoal = "Tone up"
+    
     var body: some View {
-        // MARK: Display dummy user info - name, weight, height, age, gender, exercise goal
         // MARK: Store user info in CoreData - make new User entity? Use plist instead?
         // MARK: Once user info has been saved, display in form here
         List {
