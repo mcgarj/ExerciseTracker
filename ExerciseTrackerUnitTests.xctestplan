@@ -18,6 +18,13 @@
         "identifier" : "41730BAB2B077BAE00EDDBFD",
         "name" : "ExerciseTrackerUnitTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExerciseTracker.xcodeproj",
+        "identifier" : "41730B9B2B07695F00EDDBFD",
+        "name" : "ExerciseTrackerUITests"
+      }
     }
   ],
   "version" : 1
